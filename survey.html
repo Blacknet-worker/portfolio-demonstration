@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Survey Form</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: #101010;
+        color: white;
+        padding: 4rem 10%;
+      }
+
+      h1 {
+        text-align: center;
+        color: #ea580c;
+        margin-bottom: 2rem;
+      }
+
+      form {
+        background: #1a1a1a;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 0 20px #ea580c40;
+      }
+
+      label {
+        display: block;
+        margin-top: 1.5rem;
+        font-weight: bold;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        width: 100%;
+        padding: 1rem;
+        margin-top: 0.5rem;
+        border: none;
+        border-radius: 0.5rem;
+        background: #2a2a2a;
+        color: white;
+      }
+
+      input[type="radio"],
+      input[type="checkbox"] {
+        margin-right: 0.5rem;
+      }
+
+      .form-group {
+        margin-bottom: 2rem;
+      }
+
+      .submit-btn {
+        background: linear-gradient(270deg, #df8908 10%, #ff1d15 100%);
+        border: none;
+        color: white;
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        border-radius: 3rem;
+        cursor: pointer;
+        transition: 0.3s ease;
+      }
+
+      .submit-btn:hover {
+        transform: scale(1.05);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>📝 Survey Form</h1>
+    <form id="surveyForm" onsubmit="return validateForm()" novalidate>
+      <div class="form-group">
+        <label for="name">Name <span>*</span></label>
+        <input type="text" id="name" name="name" required />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email <span>*</span></label>
+        <input type="email" id="email" name="email" required />
+      </div>
+
+      <div class="form-group">
+        <label>How did you hear about us?</label>
+        <input
+          type="radio"
+          id="social"
+          name="source"
+          value="Social Media"
+          required
+        />
+        <label for="social">Social Media</label><br />
+        <input type="radio" id="friend" name="source" value="Friend" />
+        <label for="friend">Friend</label><br />
+        <input type="radio" id="other" name="source" value="Other" />
+        <label for="other">Other</label>
+      </div>
+
+      <div class="form-group">
+        <label>What topics are you interested in?</label>
+        <input type="checkbox" id="web" name="topics" value="Web Development" />
+        <label for="web">Web Development</label><br />
+        <input type="checkbox" id="data" name="topics" value="Data Science" />
+        <label for="data">Data Science</label><br />
+        <input type="checkbox" id="cyber" name="topics" value="Cybersecurity" />
+        <label for="cyber">Cybersecurity</label>
+      </div>
+
+      <div class="form-group">
+        <label for="feedback">Any feedback for us?</label>
+        <textarea id="feedback" name="feedback" rows="4"></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+
+    <script>
+      function validateForm() {
+        const email = document.getElementById("email");
+        const name = document.getElementById("name");
+
+        if (!email.value.includes("@")) {
+          alert("Please enter a valid email address.");
+          return false;
+        }
+
+        if (name.value.trim() === "") {
+          alert("Name is required.");
+          return false;
+        }
+
+        return true;
+      }
+    </script>
+  </body>
+</html>
